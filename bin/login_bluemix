@@ -1,3 +1,8 @@
 
 
 cf login -u chuang@cs.usfca.edu -p QKBRg49nfyfciCk -o chuang@cs.usfca.edu -s dev
+
+#cf login -u chuang@cs.usfca.edu
+#cf target -o chuang@cs.usfca.edu -s dev
+
+
