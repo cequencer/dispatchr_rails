@@ -51,25 +51,19 @@
 
           callbackParamName: "jsoncallback"
         });
-        console.log("got here");
-        console.log(flickrPhotos);
         flickrPhotos.then(addPhotos);
-        console.log("fin");
       }
 
       function addPhotos(data) {
-        console.log("calling add photos");
         var symbol = new esri.symbol.PictureMarkerSymbol("https://dl.dropboxusercontent.com/u/52777651/flickr.png", 24, 24);
         var template = new esri.dijit.PopupTemplate({
           title: "{title}",
           description: "{description}"
         });
-        console.log(data.items)
 
         dojo.forEach(data.items, function(item) {
           var loc = new esri.geometry.Point(item.longitude, item.latitude);
           map.graphics.add(new esri.Graphic(loc, symbol, item, template));
-          console.log('longitude ' + item.longitude);
         });
 
       }
