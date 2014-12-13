@@ -4,7 +4,7 @@
 		<TITLE>Ruby on Rails Starter Application</TITLE>
 		<link href='/stylesheets/style.css' rel='stylesheet'>
 	</HEAD>
- 
+
 	<BODY>
 		  <table>
 			<tr>
@@ -18,7 +18,7 @@
 			  </td>
 			</tr>
 		  </table>
-		
+
 		<!--
 		<h1>Welcome to Bluemix!</h1>
 		<h2>Your ip: <%= @yourip%>.This application is powered by Ruby <%= @ruby_version%> on Rails <%= @rails_version%>.</h2>
@@ -29,7 +29,7 @@
 					<th>Value</th>
 				</tr>
 			</thead>
-			
+
 			<tbody>
 			<% @env.each do |key, value| %>
 			<% if key == 'VCAP_SERVICES' then value = '**hidden**' end %>
@@ -41,6 +41,6 @@
 			</tbody>
 		</table>
 		-->
-		
+
 	</BODY>
 </HTML>
