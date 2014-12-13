@@ -1,7 +1,7 @@
 applications:
 - disk_quota: 1024M
-  host: dispatchr
-  name: dispatchr
+  host: frdispatchr
+  name: frdispatchr
   path: .
   domain: mybluemix.net
   instances: 1
