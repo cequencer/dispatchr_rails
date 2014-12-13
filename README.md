@@ -9,5 +9,6 @@ Team members:
 - cequencer
 - scoutsaachi
 - kurttomlinson
+- zhangjiannan
 
 

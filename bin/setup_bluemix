@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+
+cf api https://api.ng.bluemix.net
+
+
