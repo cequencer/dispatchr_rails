@@ -53,6 +53,8 @@ class MapController < ApplicationController
         events_array = {
             :items => [
                 {
+                    :title => "fire",
+                    :description => "a fire is here",
                     :latitude => 37.4431071,
                     :longitude => -122.1580688,
                 },
