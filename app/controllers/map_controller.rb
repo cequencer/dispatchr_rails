@@ -48,5 +48,13 @@ class MapController < ApplicationController
       end
     @env = env
 
-  end
+    end
+    def events
+        events_array = {
+            :items => [{
+                :latitude => 37.4431071,
+                :longitude => -122.1580688,
+            }]}
+        render :json => events_array
+    end
 end

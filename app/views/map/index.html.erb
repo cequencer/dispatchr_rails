@@ -32,37 +32,44 @@
       var map;
 
       function init() {
-        map = new esri.Map("map",{
+        map = new esri.Map("map", {
           basemap: "topo",
-          center: [ -122.1580688, 37.4431071 ], //long, lat
+          center: [-122.1580688, 37.4431071], //long, lat
           zoom: 20
         });
-        dojo.connect(map,"onLoad", loadPhotos);
+        dojo.connect(map, "onLoad", loadPhotos);
       }
 
-      function loadPhotos(){
+      function loadPhotos() {
         var flickrPhotos = esri.request({
-          url: "http://api.flickr.com/services/feeds/geo",
-          content:{
-              format:"json",
-              tagmode: "any",
-              tags: "mountain"
+          url: "/api/events",
+          content: {
+            format: "json",
+            tagmode: "any",
+            tags: "mountain"
           },
+
           callbackParamName: "jsoncallback"
         });
+        console.log("got here");
+        console.log(flickrPhotos);
         flickrPhotos.then(addPhotos);
+        console.log("fin");
       }
 
-      function addPhotos(data){
-       var symbol = new esri.symbol.PictureMarkerSymbol("https://dl.dropboxusercontent.com/u/52777651/flickr.png", 24, 24);
-       var template = new esri.dijit.PopupTemplate({
+      function addPhotos(data) {
+        console.log("calling add photos");
+        var symbol = new esri.symbol.PictureMarkerSymbol("https://dl.dropboxusercontent.com/u/52777651/flickr.png", 24, 24);
+        var template = new esri.dijit.PopupTemplate({
           title: "{title}",
-          description:"{description}"
+          description: "{description}"
         });
+        console.log(data.items)
 
-        dojo.forEach(data.items, function(item){
+        dojo.forEach(data.items, function(item) {
           var loc = new esri.geometry.Point(item.longitude, item.latitude);
           map.graphics.add(new esri.Graphic(loc, symbol, item, template));
+          console.log('longitude ' + item.longitude);
         });
 
       }

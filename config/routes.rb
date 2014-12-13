@@ -12,6 +12,8 @@ RailsStarter::Application.routes.draw do
   get ':controller(/:action(/:id))'
   root :to => 'map#index'
 
+  match 'api/events' => 'map#events'
+
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
