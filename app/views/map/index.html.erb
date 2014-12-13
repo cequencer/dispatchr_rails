@@ -39,6 +39,16 @@
         dojo.connect(map, "onLoad", loadPhotos);
       }
 
+      pictureLookup = {
+        "fire": "/img/flames.png",
+        "accident": "/img/car.png",
+        "crime": "/img/crime.png",
+        "electricity": "/img/electricity.png",
+        "medical": "/img/medical.png",
+        "toxic": "/img/toxic.png",
+        "flood": "/img/flood.png"
+      }
+
       function loadPhotos() {
         var events = esri.request({
           url: "/api/events",
@@ -49,13 +59,16 @@
       }
 
       function addEvents(data) {
-        var symbol = new esri.symbol.PictureMarkerSymbol("https://dl.dropboxusercontent.com/u/52777651/flickr.png", 24, 24);
+        var symbol = new esri.symbol.PictureMarkerSymbol("/img/default.png", 32, 32);
         var template = new esri.dijit.PopupTemplate({
           title: "{title}",
           description: "{description}"
         });
 
         dojo.forEach(data.items, function(item) {
+          if (item.title in pictureLookup) {
+            symbol = new esri.symbol.PictureMarkerSymbol(pictureLookup[item.title], 32, 32);
+          }
           var loc = new esri.geometry.Point(item.longitude, item.latitude);
           map.graphics.add(new esri.Graphic(loc, symbol, item, template));
         });
